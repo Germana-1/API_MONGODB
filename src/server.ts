@@ -1,7 +1,7 @@
 import app from "./app";
+import { connection } from "./database/mongo.client";
 
-const port = process.env.PORT || 3001;
-
-app.listen(port, () =>
-  console.log(`Server running at http://localhost:${port}`)
-);
+(async () => {
+  await connection();
+  app.listen(process.env.PORT || 3001, () => console.log(`Server is running`));
+})();
